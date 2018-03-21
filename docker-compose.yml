@@ -4,8 +4,6 @@ services:
     build: .
     ports:
     - "3000:3000"
-    volumes:
-    - "./app:/src/app"
     working_dir: /src/app
     command: "npm start"
 

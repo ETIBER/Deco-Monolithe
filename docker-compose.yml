@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   monolyte:
-    image: node:alpine
+    build: .
     ports:
     - "3000:3000"
     volumes:

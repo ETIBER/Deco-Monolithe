@@ -1,0 +1,11 @@
+version: '3.5'
+services:
+  monolyte:
+    image: node:alpine
+    ports:
+    - "3000:3000"
+    volumes:
+    - "./app:/src/app"
+    working_dir: /src/app
+    command: "npm start"
+

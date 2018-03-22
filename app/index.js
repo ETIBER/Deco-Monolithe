@@ -1,9 +1,13 @@
 const express = require('express')
 const morgan = require('morgan')
+const path = require('path')
+
+const StreamLog = require("./StreamLog")
 
 const app = express()
 
-app.use(morgan('combined'))   
+app.use(morgan('combined',{stream: new StreamLog()}))
+
 
 const PORT = process.env.PORT || 3000
 

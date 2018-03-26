@@ -25,7 +25,8 @@ app.get('/XMLrequestConsumer', function (req, res) {
 		request_id: req.id,
 		operation: "plafondSolde"
 	}
-	applicationLogStream.write
+	console.log(log)
+	applicationLogStream.write(Buffer.from(JSON.stringify(log)+"\n"))
 	res.sendStatus(200)
 })
 

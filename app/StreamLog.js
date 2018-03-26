@@ -5,7 +5,8 @@ module.exports = class StreamLog extends Writable {
 	constructor(logPort) {
 		super()
 		const that = this
-		logStashConnector.getLogStream(logPort).then((logStream)=> {
+		this.logPort = logPort
+		logStashConnector.getLogStream(this.logPort).then((logStream)=> {
 			that.logStream = logStream
 		})
 	} 

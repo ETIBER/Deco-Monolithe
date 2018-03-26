@@ -8,11 +8,12 @@ const StreamLog = require("./StreamLog")
 const app = express()
 
 const morganFormat = ':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent" :request_id'
+const apache_log_port = 5101
 
 morgan.token('request_id', function (req, res) { return req.id })
 
 app.use(addRequestId);
-app.use(morgan(morganFormat,{stream: new StreamLog()}))
+app.use(morgan(morganFormat,{stream: new StreamLog(apache_log_port)}))
 
 
 

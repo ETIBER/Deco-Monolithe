@@ -25,7 +25,15 @@ app.get('/XMLrequestConsumer', function (req, res) {
 		request_id: req.id,
 		operation: "plafondSolde"
 	}
-	console.log(log)
+	applicationLogStream.write(Buffer.from(JSON.stringify(log)+"\n"))
+	res.sendStatus(200)
+})
+
+app.get('/apiEndPoint', function (req, res) {
+	const log = {
+		request_id: req.id,
+		operation: "virement_interne"
+	}
 	applicationLogStream.write(Buffer.from(JSON.stringify(log)+"\n"))
 	res.sendStatus(200)
 })

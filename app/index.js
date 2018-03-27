@@ -38,12 +38,27 @@ app.get('/apiEndPoint', function (req, res) {
 	res.sendStatus(200)
 })
 
-app.get('/*', function (req, res) {
+app.get('/services', function (req, res) {
   res.sendStatus(200)
 })
 
+app.get('/services/consultation_solde/*', function (req, res) {
+  	const log = {
+		request_id: req.id,
+		operation: "consultation_solde"
+	}
+	applicationLogStream.write(Buffer.from(JSON.stringify(log)+"\n"))
+	res.sendStatus(200)
+})
 
-
+app.get('/api/carteService/*', function (req, res) {
+  	const log = {
+		request_id: req.id,
+		operation: "opposition_carte"
+	}
+	applicationLogStream.write(Buffer.from(JSON.stringify(log)+"\n"))
+	res.sendStatus(200)
+})
 
 app.listen(PORT, function () {
   console.log(`My monolyte listen on ${PORT}`)

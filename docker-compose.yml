@@ -6,4 +6,26 @@ services:
     - "3000:3000"
     working_dir: /src/app
     command: "npm start"
+    depends_on:
+      - logstash
+    networks:
+      - log
+  logstash:
+    build:
+      context: logstash/
+    volumes:
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+    ports:
+      - "5000:5000"
+      - "5101:5101"
+      - "5200:5200"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - log
 
+networks:
+
+  log:
+    driver: bridge

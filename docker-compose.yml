@@ -1,7 +1,8 @@
 version: '3.5'
 services:
   monolyte:
-    build: .
+    build:
+      context: app/
     ports:
     - "3000:3000"
     working_dir: /src/app
